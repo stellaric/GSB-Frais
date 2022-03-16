@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Visiteur index{% endblock %}
+
+{% block body %}
+    <h1>Visiteur index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Adresse</th>
+                <th>Ville</th>
+                <th>Cp</th>
+                <th>DateEmbauche</th>
+                <th>Login</th>
+                <th>Mdp</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for visiteur in visiteurs %}
+            <tr>
+                <td>{{ visiteur.id }}</td>
+                <td>{{ visiteur.nom }}</td>
+                <td>{{ visiteur.prenom }}</td>
+                <td>{{ visiteur.adresse }}</td>
+                <td>{{ visiteur.ville }}</td>
+                <td>{{ visiteur.cp }}</td>
+                <td>{{ visiteur.dateEmbauche ? visiteur.dateEmbauche|date('Y-m-d') : '' }}</td>
+                <td>{{ visiteur.login }}</td>
+                <td>{{ visiteur.mdp }}</td>
+                <td>
+                    <a href="{{ path('app_visiteur_show', {'id': visiteur.id}) }}">show</a>
+                    <a href="{{ path('app_visiteur_edit', {'id': visiteur.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_visiteur_new') }}">Create new</a>
+{% endblock %}

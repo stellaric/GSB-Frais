@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}FicheFrais{% endblock %}
+
+{% block body %}
+    <h1>FicheFrais</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ fiche_frai.id }}</td>
+            </tr>
+            <tr>
+                <th>Mois</th>
+                <td>{{ fiche_frai.mois ? fiche_frai.mois|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>NbJustificatifs</th>
+                <td>{{ fiche_frai.nbJustificatifs }}</td>
+            </tr>
+            <tr>
+                <th>MontantValide</th>
+                <td>{{ fiche_frai.montantValide }}</td>
+            </tr>
+            <tr>
+                <th>DateModif</th>
+                <td>{{ fiche_frai.dateModif ? fiche_frai.dateModif|date('Y-m-d') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_fiche_frais_index') }}">back to list</a>
+
+    <a href="{{ path('app_fiche_frais_edit', {'id': fiche_frai.id}) }}">edit</a>
+
+    {{ include('fiche_frais/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}LigneFraisHorsForfait index{% endblock %}
+
+{% block body %}
+    <h1>LigneFraisHorsForfait index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>Montant</th>
+                <th>Libelle</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for ligne_frais_hors_forfait in ligne_frais_hors_forfaits %}
+            <tr>
+                <td>{{ ligne_frais_hors_forfait.id }}</td>
+                <td>{{ ligne_frais_hors_forfait.date ? ligne_frais_hors_forfait.date|date('Y-m-d') : '' }}</td>
+                <td>{{ ligne_frais_hors_forfait.montant }}</td>
+                <td>{{ ligne_frais_hors_forfait.libelle }}</td>
+                <td>
+                    <a href="{{ path('app_ligne_frais_hors_forfait_show', {'id': ligne_frais_hors_forfait.id}) }}">show</a>
+                    <a href="{{ path('app_ligne_frais_hors_forfait_edit', {'id': ligne_frais_hors_forfait.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_ligne_frais_hors_forfait_new') }}">Create new</a>
+{% endblock %}

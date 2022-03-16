@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}FicheFrais index{% endblock %}
+
+{% block body %}
+    <h1>FicheFrais index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Mois</th>
+                <th>NbJustificatifs</th>
+                <th>MontantValide</th>
+                <th>DateModif</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for fiche_frai in fiche_frais %}
+            <tr>
+                <td>{{ fiche_frai.id }}</td>
+                <td>{{ fiche_frai.mois ? fiche_frai.mois|date('Y-m-d') : '' }}</td>
+                <td>{{ fiche_frai.nbJustificatifs }}</td>
+                <td>{{ fiche_frai.montantValide }}</td>
+                <td>{{ fiche_frai.dateModif ? fiche_frai.dateModif|date('Y-m-d') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_fiche_frais_show', {'id': fiche_frai.id}) }}">show</a>
+                    <a href="{{ path('app_fiche_frais_edit', {'id': fiche_frai.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_fiche_frais_new') }}">Create new</a>
+{% endblock %}
