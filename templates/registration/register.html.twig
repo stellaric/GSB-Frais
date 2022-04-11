@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block body %}
+<nav class="navbar shadow-1 airforce dark-2">
+  <a href="#" class="navbar-brand">GSB</a>
+
+  <!-- Dark menu background hover variant -->
+  <div class="navbar-menu ml-auto hover-bg-dark">
+  <a class="navbar-link" href="{{path('accueil')}}">Accueil</a>
+    <a class="navbar-link" href="{{path('connexion')}}">Connexion</a>
+    <a class="navbar-link" href="{{path('inscription')}}">Inscription  </a>
+  </div>
+</nav>
+
+<br>
+<br>
+ <div class="grix xs6">
+  <div class="pos-xs3">
+<div class="card shadow-1 white" style="width: 260%;">
+  <div class="card-content">
+   
+
+   <center> <h1>Inscription</h1></center>
+
+    {{ form_start(registrationForm) }}
+        {{ form_row(registrationForm.email) }}
+        <br>
+        {{ form_row(registrationForm.plainPassword, {
+            label: 'Mot de passe : '
+        }) }}
+        <br>
+        {{ form_row(registrationForm.agreeTerms) }}
+
+        <center><button type="submit" class="btn rounded-1 airforce dark-2 btn-press">Inscription</button></center>
+    {{ form_end(registrationForm) }}
+
+
+  </div>
+</div>
+</div>
+</div>
+{% endblock %}

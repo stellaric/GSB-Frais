@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}LigneFraisForfait index{% endblock %}
+
+{% block body %}
+    <h1>LigneFraisForfait index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Quantite</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for ligne_frais_forfait in ligne_frais_forfaits %}
+            <tr>
+                <td>{{ ligne_frais_forfait.id }}</td>
+                <td>{{ ligne_frais_forfait.quantite }}</td>
+                <td>
+                    <a href="{{ path('app_ligne_frais_forfait_show', {'id': ligne_frais_forfait.id}) }}">show</a>
+                    <a href="{{ path('app_ligne_frais_forfait_edit', {'id': ligne_frais_forfait.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_ligne_frais_forfait_new') }}">Create new</a>
+{% endblock %}

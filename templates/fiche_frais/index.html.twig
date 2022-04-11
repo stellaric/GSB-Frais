@@ -20,7 +20,7 @@
         {% for fiche_frai in fiche_frais %}
             <tr>
                 <td>{{ fiche_frai.id }}</td>
-                <td>{{ fiche_frai.mois ? fiche_frai.mois|date('Y-m-d') : '' }}</td>
+                <td>{{ fiche_frai.mois ? fiche_frai.mois|join(', ') : '' }}</td>
                 <td>{{ fiche_frai.nbJustificatifs }}</td>
                 <td>{{ fiche_frai.montantValide }}</td>
                 <td>{{ fiche_frai.dateModif ? fiche_frai.dateModif|date('Y-m-d') : '' }}</td>

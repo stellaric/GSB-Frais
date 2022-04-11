@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Galaxy-Swiss-Bourdin{% endblock %}
+
+{% block body %}
+
+<nav class="navbar shadow-1 airforce dark-2">
+  <a href="#" class="navbar-brand">GSB</a>
+
+  <!-- Dark menu background hover variant -->
+  <div class="navbar-menu ml-auto hover-bg-dark">
+  <a class="navbar-link" href="{{path('accueil')}}">Accueil</a>
+    <a class="navbar-link " href="{{path('connexion')}}">Connexion</a>
+     <a class="navbar-link " href="{{path('inscription')}}">Inscription</a>
+  </div>
+</nav>
+
+
+<br>
+<br>
+ <div class="grix xs6">
+  <div class="pos-xs3">
+<div class="card shadow-1 white" style="width: 260%;">
+  <div class="card-content">
+    
+<form method="post">
+    {% if error %}
+        <div class="p-3 my-2 rounded-1 red light-4 text-red text-dark-4 bd-solid bd-red bd-1">Identifiant ou mot de passe incorrecte</div>
+    {% endif %}
+
+    {% if app.user %}
+    <div class="p-3 my-2 rounded-1 blue light-4 text-blue text-dark-3 bd-solid bd-blue bd-light-1 bd-1">
+  <span class="iconify-inline" data-icon="mdi:information"></span> 
+            Vous êtes déja connecter sur  {{ app.user.username }}, <a href="{{ path('deconnexion') }}"><b>Déconnexion</b></a>
+       
+</div>
+        
+    {% endif %}
+
+   <center> <h1 class="h3 mb-3 font-weight-normal">Connexion</h1></center>
+    <label for="inputEmail">Email</label>
+    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+    <br>
+    <br>
+    <label for="inputPassword">Mot de Passe</label>
+    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+
+    <input type="hidden" name="_csrf_token"
+           value="{{ csrf_token('authenticate') }}"
+    >
+
+    {#
+        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+        See https://symfony.com/doc/current/security/remember_me.html
+
+        <div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" name="_remember_me"> Remember me
+            </label>
+        </div>
+    #}
+
+<br>
+<br>
+  <center>  <button class="btn rounded-1 airforce dark-2 btn-press" type="submit">
+       Connexion
+    </button></center>
+</form>
+
+
+  </div>
+</div>
+</div>
+</div>
+
+
+{% endblock %}

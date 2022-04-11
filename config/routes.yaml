@@ -1,3 +1,32 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
+
+accueil:
+    path: /
+    controller: App\Controller\AccueilController::index
+
+connexion:
+  path: /connexion
+  controller: App\Controller\SecurityController::login
+
+deconnexion:
+  path: /deconnexion
+  controller: App\Controller\SecurityController::logout
+
+inscription:
+  path: /inscription
+  controller: App\Controller\RegistrationController:register
+
+visiteur:
+  path: /visiteur
+  controller: App\Controller\VisiteurController::index
+
+consulter:
+  path: /visiteur/consulter
+  controller: App\Controller\VisiteurController::consulter
+
+renseigner:
+  path: /visiteur/renseigner
+  controller: App\Controller\VisiteurController::renseigner
+

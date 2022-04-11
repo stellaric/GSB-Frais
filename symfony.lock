@@ -20,8 +20,11 @@
     "doctrine/common": {
         "version": "3.2.2"
     },
+    "doctrine/data-fixtures": {
+        "version": "1.5.2"
+    },
     "doctrine/dbal": {
-        "version": "3.3.3"
+        "version": "3.3.4"
     },
     "doctrine/deprecations": {
         "version": "v0.5.3"
@@ -38,6 +41,18 @@
             "config/packages/doctrine.yaml",
             "src/Entity/.gitignore",
             "src/Repository/.gitignore"
+        ]
+    },
+    "doctrine/doctrine-fixtures-bundle": {
+        "version": "3.4",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "3.0",
+            "ref": "1f5514cfa15b947298df4d771e694e578d4c204d"
+        },
+        "files": [
+            "src/DataFixtures/AppFixtures.php"
         ]
     },
     "doctrine/doctrine-migrations-bundle": {
@@ -72,7 +87,7 @@
         "version": "2.11.2"
     },
     "doctrine/persistence": {
-        "version": "2.4.0"
+        "version": "2.4.1"
     },
     "doctrine/sql-formatter": {
         "version": "1.1.2"
@@ -114,7 +129,7 @@
         "version": "v1.15.0"
     },
     "phpstan/phpdoc-parser": {
-        "version": "1.2.0"
+        "version": "1.4.0"
     },
     "phpunit/php-code-coverage": {
         "version": "9.2.15"
@@ -589,7 +604,7 @@
         "version": "v3.3.8"
     },
     "twig/twig": {
-        "version": "v3.3.8"
+        "version": "v3.3.9"
     },
     "webmozart/assert": {
         "version": "1.10.0"

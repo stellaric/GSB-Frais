@@ -1,0 +1,79 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Galaxy-Swiss-Bourdin{% endblock %}
+
+{% block body %}
+
+ <!-- Barre de menu  -->
+<nav class="navbar shadow-1 airforce dark-2">
+  <a href="#" class="navbar-brand">GSB</a>
+    <div class="navbar-menu ml-auto hover-bg-dark">
+  <a class="navbar-link" href="{{path('app_fiche_frais_new')}}">Créer Fiche Frais</a>
+  <a class="navbar-link " href="{{path('deconnexion')}}">Déconnexion</a>
+  <a data-target="slidebar" class="navbar-link" >Plus </a>
+    </div>
+</nav>
+ <!--  -->
+
+ <!-- Slidebar -->
+<div class="sidenav shadow-1 white" id="slidebar" data-ax="sidenav">
+  <div class="sidenav-header airforce dark-2">
+      <a class="navbar-link navbar-centered" href=""> {{app.user.nom}} {{app.user.prenom}} </a>
+
+  </div>
+    <a href="{{path('visiteur')}}" class="sidenav-link ">Accueil</a>
+    <a href="{{path('renseigner')}}" class="sidenav-link ">Renseigner</a>
+    <a href="{{path('consulter')}}" class="sidenav-link">Consulter</a>
+  <div class="sidenav-footer  airforce dark-2">
+   @Copyright GSB
+  </div>
+</div>
+ <!---->
+
+ <!-- Liste -->
+<center><h1>Renseignement de vos fiches </h1></center>
+
+<br>
+<br>
+
+<br>
+    
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Mois</th>
+                <th>Nombre <br>Justificatifs</th>
+                <th>Montant Validé</th>
+                <th>Date Modifiée</th>
+                <th></th>
+                
+            </tr>
+        </thead>
+        <tbody>
+        {% for fiche_frai in fiche_frais %}
+            <tr>
+                <td>{{ fiche_frai.id }}</td>
+                <td>{{ fiche_frai.mois ? fiche_frai.mois|join(', ') : '' }}</td>
+                <td>{{ fiche_frai.nbJustificatifs }}</td>
+                <td>{{ fiche_frai.montantValide }}</td>
+                <td>{{ fiche_frai.dateModif ? fiche_frai.dateModif|date('d-m-Y') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_fiche_frais_show', {'id': fiche_frai.id}) }} class="btn shadow-1 rounded-1 btn-outline btn-opening text-airforce text-light-2">Détails</a>
+                  
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">Aucune information <B><a href="app_fiche_frais_new">Créer une fiche frais</B></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+ <!-- -->
+    
+
+
+
+
+{% endblock %}

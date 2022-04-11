@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\VisiteurRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -18,12 +20,12 @@ class Visiteur
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=100)
+     * @ORM\Column(type="string", length=40)
      */
     private $nom;
 
     /**
-     * @ORM\Column(type="string", length=100)
+     * @ORM\Column(type="string", length=40)
      */
     private $prenom;
 
@@ -33,7 +35,7 @@ class Visiteur
     private $adresse;
 
     /**
-     * @ORM\Column(type="string", length=200)
+     * @ORM\Column(type="string", length=100)
      */
     private $ville;
 
@@ -48,14 +50,14 @@ class Visiteur
     private $dateEmbauche;
 
     /**
-     * @ORM\Column(type="string", length=40)
+     * @ORM\OneToMany(targetEntity=FicheFrais::class, mappedBy="visiteur")
      */
-    private $login;
+    private $ficheFrais;
 
-    /**
-     * @ORM\Column(type="string", length=15)
-     */
-    private $mdp;
+    public function __construct()
+    {
+        $this->ficheFrais = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -134,26 +136,32 @@ class Visiteur
         return $this;
     }
 
-    public function getLogin(): ?string
+    /**
+     * @return Collection<int, FicheFrais>
+     */
+    public function getFicheFrais(): Collection
     {
-        return $this->login;
+        return $this->ficheFrais;
     }
 
-    public function setLogin(string $login): self
+    public function addFicheFrai(FicheFrais $ficheFrai): self
     {
-        $this->login = $login;
+        if (!$this->ficheFrais->contains($ficheFrai)) {
+            $this->ficheFrais[] = $ficheFrai;
+            $ficheFrai->setVisiteur($this);
+        }
 
         return $this;
     }
 
-    public function getMdp(): ?string
+    public function removeFicheFrai(FicheFrais $ficheFrai): self
     {
-        return $this->mdp;
-    }
-
-    public function setMdp(string $mdp): self
-    {
-        $this->mdp = $mdp;
+        if ($this->ficheFrais->removeElement($ficheFrai)) {
+            // set the owning side to null (unless already changed)
+            if ($ficheFrai->getVisiteur() === $this) {
+                $ficheFrai->setVisiteur(null);
+            }
+        }
 
         return $this;
     }

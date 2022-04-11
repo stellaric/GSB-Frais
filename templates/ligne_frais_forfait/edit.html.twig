@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit LigneFraisForfait{% endblock %}
+
+{% block body %}
+    <h1>Edit LigneFraisForfait</h1>
+
+    {{ include('ligne_frais_forfait/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_ligne_frais_forfait_index') }}">back to list</a>
+
+    {{ include('ligne_frais_forfait/_delete_form.html.twig') }}
+{% endblock %}

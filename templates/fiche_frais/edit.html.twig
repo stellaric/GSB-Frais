@@ -3,11 +3,56 @@
 {% block title %}Edit FicheFrais{% endblock %}
 
 {% block body %}
-    <h1>Edit FicheFrais</h1>
+ <!-- Barre de menu  -->
+<nav class="navbar shadow-1 airforce dark-2">
+  <a href="#" class="navbar-brand">GSB</a>
+    <div class="navbar-menu ml-auto hover-bg-dark">
+  <a class="navbar-link" href="{{path('app_fiche_frais_new')}}">Créer Fiche Frais</a>
+  <a class="navbar-link " href="{{path('deconnexion')}}">Déconnexion</a>
+  <a data-target="slidebar" class="navbar-link" >Plus </a>
+    </div>
+</nav>
+ <!--  -->
 
-    {{ include('fiche_frais/_form.html.twig', {'button_label': 'Update'}) }}
+               
+           
+ <!-- Slidebar -->
+<div class="sidenav shadow-1 white" id="slidebar" data-ax="sidenav">
+  <div class="sidenav-header airforce dark-2">
+    <a href="{{path('visiteur')}}" class="sidenav-link ">GSB</a>
+  </div>
+    <a href="{{path('visiteur')}}" class="sidenav-link ">Accueil</a>
+    <a href="{{path('renseigner')}}" class="sidenav-link ">Renseigner</a>
+    <a href="{{path('consulter')}}" class="sidenav-link">Consulter</a>
+    
+  <div class="sidenav-footer  airforce dark-2">
+   @Copyright GSB
+  </div>
+</div>
 
-    <a href="{{ path('app_fiche_frais_index') }}">back to list</a>
+<br>
+<br>
+<div class="grix xs6">
+  <div class="pos-xs3">
+<div class="card shadow-1 white" style="width: 260%;">
+  <div class="card-content">
+<!--Modifier fiche frais-->
+ <!---->
+    <h1>Modifier FicheFrais</h1>
 
-    {{ include('fiche_frais/_delete_form.html.twig') }}
+    {{ include('fiche_frais/_form.html.twig', {'button_label': 'Modifier'}) }}
+
+
+
+<!---->
+
+    </div>
+</div>
+</div>
+</div>
+
+
+  <!--Retour a la liste-->
+ <center> <a href="{{ path('consulter') }}" class="btn shadow-1 rounded-1 btn-outline btn-opening text-airforce text-light-2">Retour à la Liste</a></center>
+  <!---->
 {% endblock %}

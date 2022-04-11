@@ -15,15 +15,8 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class FicheFraisController extends AbstractController
 {
-    /**
-     * @Route("/", name="app_fiche_frais_index", methods={"GET"})
-     */
-    public function index(FicheFraisRepository $ficheFraisRepository): Response
-    {
-        return $this->render('fiche_frais/index.html.twig', [
-            'fiche_frais' => $ficheFraisRepository->findAll(),
-        ]);
-    }
+
+
 
     /**
      * @Route("/new", name="app_fiche_frais_new", methods={"GET", "POST"})
@@ -31,12 +24,15 @@ class FicheFraisController extends AbstractController
     public function new(Request $request, FicheFraisRepository $ficheFraisRepository): Response
     {
         $ficheFrai = new FicheFrais();
+
+       
+
         $form = $this->createForm(FicheFraisType::class, $ficheFrai);
         $form->handleRequest($request);
-
+        
         if ($form->isSubmitted() && $form->isValid()) {
             $ficheFraisRepository->add($ficheFrai);
-            return $this->redirectToRoute('app_fiche_frais_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('consulter', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('fiche_frais/new.html.twig', [
@@ -65,7 +61,7 @@ class FicheFraisController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $ficheFraisRepository->add($ficheFrai);
-            return $this->redirectToRoute('app_fiche_frais_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('renseigner', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('fiche_frais/edit.html.twig', [

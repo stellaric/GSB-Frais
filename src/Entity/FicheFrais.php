@@ -3,7 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\FicheFraisRepository;
-use App\Entity\Visiteur;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -19,9 +18,9 @@ class FicheFrais
     private $id;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="json")
      */
-    private $mois;
+    private $mois = [];
 
     /**
      * @ORM\Column(type="integer")
@@ -39,22 +38,44 @@ class FicheFrais
     private $dateModif;
 
     /**
-     * @ORM\ManytoOne(targetEntity="Visiteur" )
-     * @ORM\JoinColumn(nullable=false) ;
+     * @ORM\ManyToOne(targetEntity=LigneFraisHorsForfait::class, inversedBy="ficheFrais")
      */
-    private $visiteur ;
+    private $ligneFraisHorsForfait;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Etat::class, inversedBy="ficheFrais")
+     */
+    private $etat;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=LigneFraisForfait::class, inversedBy="ficheFrais")
+     */
+    private $ligneFraisForfait;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Visiteur::class, inversedBy="ficheFrais")
+     */
+    private $visiteur;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="fichefrais")
+     */
+    private $user;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getMois(): ?\DateTimeInterface
+    public function getMois(): ?array
     {
+        
         return $this->mois;
+        $mois[]='Janvier';'Mars';
+        
     }
 
-    public function setMois(\DateTimeInterface $mois): self
+    public function setMois(array $mois): self
     {
         $this->mois = $mois;
 
@@ -96,4 +117,66 @@ class FicheFrais
 
         return $this;
     }
+
+    public function getLigneFraisHorsForfait(): ?LigneFraisHorsForfait
+    {
+        return $this->ligneFraisHorsForfait;
+    }
+
+    public function setLigneFraisHorsForfait(?LigneFraisHorsForfait $ligneFraisHorsForfait): self
+    {
+        $this->ligneFraisHorsForfait = $ligneFraisHorsForfait;
+
+        return $this;
+    }
+
+    public function getEtat(): ?Etat
+    {
+        return $this->etat;
+    }
+
+    public function setEtat(?Etat $etat): self
+    {
+        $this->etat = $etat;
+
+        return $this;
+    }
+
+    public function getLigneFraisForfait(): ?LigneFraisForfait
+    {
+        return $this->ligneFraisForfait;
+    }
+
+    public function setLigneFraisForfait(?LigneFraisForfait $ligneFraisForfait): self
+    {
+        $this->ligneFraisForfait = $ligneFraisForfait;
+
+        return $this;
+    }
+
+    public function getVisiteur(): ?Visiteur
+    {
+        return $this->visiteur;
+    }
+
+    public function setVisiteur(?Visiteur $visiteur): self
+    {
+        $this->visiteur = $visiteur;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+ 
 }

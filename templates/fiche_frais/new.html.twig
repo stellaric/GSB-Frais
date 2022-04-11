@@ -3,9 +3,51 @@
 {% block title %}New FicheFrais{% endblock %}
 
 {% block body %}
-    <h1>Create new FicheFrais</h1>
+ <!-- Barre de menu  -->
+<nav class="navbar shadow-1 airforce dark-2">
+  <a href="#" class="navbar-brand">GSB</a>
+    <div class="navbar-menu ml-auto hover-bg-dark">
+  <a class="navbar-link" href="{{path('app_fiche_frais_new')}}">Créer Fiche Frais</a>
+  <a class="navbar-link " href="{{path('deconnexion')}}">Déconnexion</a>
+  <a data-target="slidebar" class="navbar-link" >Plus </a>
+    </div>
+</nav>
+ <!--  -->
+
+               
+           
+ <!-- Slidebar -->
+<div class="sidenav shadow-1 white" id="slidebar" data-ax="sidenav">
+  <div class="sidenav-header airforce dark-2">
+    <a href="{{path('visiteur')}}" class="sidenav-link ">GSB</a>
+  </div>
+    <a href="{{path('visiteur')}}" class="sidenav-link ">Accueil</a>
+    <a href="{{path('renseigner')}}" class="sidenav-link ">Renseigner</a>
+    <a href="{{path('consulter')}}" class="sidenav-link">Consulter</a>
+    
+  <div class="sidenav-footer  airforce dark-2">
+   @Copyright GSB
+  </div>
+</div>
+ <!---->
+
+<div class="grix xs6">
+  <div class="pos-xs3">
+<div class="card shadow-1 white" style="width: 260%;">
+  <div class="card-content">
+<!--Créer fiche frais-->
+  <center><h1>Créer un nouveau Fiche Frais</h1></center>
 
     {{ include('fiche_frais/_form.html.twig') }}
+    <!---->
 
-    <a href="{{ path('app_fiche_frais_index') }}">back to list</a>
+    </div>
+</div>
+</div>
+</div>
+<!--Retour a la liste-->
+ <center> <a href="{{ path('renseigner') }}" class="btn shadow-1 rounded-1 btn-outline btn-opening text-airforce text-light-2">Retour à la Liste</a></center>
+  <!---->
+
+  
 {% endblock %}

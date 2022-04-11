@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit3d44527d6d6b3a29308437fb271c19d5
+class ComposerStaticInit40078e250758264be8a246bdf73ea1c2
 {
     public static $files = array (
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
@@ -149,11 +149,13 @@ class ComposerStaticInit3d44527d6d6b3a29308437fb271c19d5
             'Doctrine\\Deprecations\\' => 22,
             'Doctrine\\DBAL\\' => 14,
             'Doctrine\\Common\\Lexer\\' => 22,
+            'Doctrine\\Common\\DataFixtures\\' => 29,
             'Doctrine\\Common\\Collections\\' => 28,
             'Doctrine\\Common\\Cache\\' => 22,
             'Doctrine\\Common\\Annotations\\' => 28,
             'Doctrine\\Common\\' => 16,
             'Doctrine\\Bundle\\MigrationsBundle\\' => 33,
+            'Doctrine\\Bundle\\FixturesBundle\\' => 31,
             'Doctrine\\Bundle\\DoctrineBundle\\' => 31,
             'DeepCopy\\' => 9,
         ),
@@ -551,6 +553,10 @@ class ComposerStaticInit3d44527d6d6b3a29308437fb271c19d5
         array (
             0 => __DIR__ . '/..' . '/doctrine/lexer/lib/Doctrine/Common/Lexer',
         ),
+        'Doctrine\\Common\\DataFixtures\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/doctrine/data-fixtures/lib/Doctrine/Common/DataFixtures',
+        ),
         'Doctrine\\Common\\Collections\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/collections/lib/Doctrine/Common/Collections',
@@ -573,6 +579,10 @@ class ComposerStaticInit3d44527d6d6b3a29308437fb271c19d5
         array (
             0 => __DIR__ . '/..' . '/doctrine/doctrine-migrations-bundle',
         ),
+        'Doctrine\\Bundle\\FixturesBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/doctrine/doctrine-fixtures-bundle',
+        ),
         'Doctrine\\Bundle\\DoctrineBundle\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/doctrine-bundle',
@@ -593,22 +603,30 @@ class ComposerStaticInit3d44527d6d6b3a29308437fb271c19d5
 
     public static $classMap = array (
         'App\\Controller\\AccueilController' => __DIR__ . '/../..' . '/src/Controller/AccueilController.php',
-        'App\\Controller\\ComptableController' => __DIR__ . '/../..' . '/src/Controller/ComptableController.php',
+        'App\\Controller\\FicheFraisController' => __DIR__ . '/../..' . '/src/Controller/FicheFraisController.php',
+        'App\\Controller\\RegistrationController' => __DIR__ . '/../..' . '/src/Controller/RegistrationController.php',
+        'App\\Controller\\SecurityController' => __DIR__ . '/../..' . '/src/Controller/SecurityController.php',
         'App\\Controller\\VisiteurController' => __DIR__ . '/../..' . '/src/Controller/VisiteurController.php',
+        'App\\Entity\\Comptable' => __DIR__ . '/../..' . '/src/Entity/Comptable.php',
         'App\\Entity\\Etat' => __DIR__ . '/../..' . '/src/Entity/Etat.php',
         'App\\Entity\\FicheFrais' => __DIR__ . '/../..' . '/src/Entity/FicheFrais.php',
         'App\\Entity\\FraisForfait' => __DIR__ . '/../..' . '/src/Entity/FraisForfait.php',
         'App\\Entity\\LigneFraisForfait' => __DIR__ . '/../..' . '/src/Entity/LigneFraisForfait.php',
         'App\\Entity\\LigneFraisHorsForfait' => __DIR__ . '/../..' . '/src/Entity/LigneFraisHorsForfait.php',
+        'App\\Entity\\User' => __DIR__ . '/../..' . '/src/Entity/User.php',
         'App\\Entity\\Visiteur' => __DIR__ . '/../..' . '/src/Entity/Visiteur.php',
-        'App\\Form\\VisiteurType' => __DIR__ . '/../..' . '/src/Form/VisiteurType.php',
+        'App\\Form\\FicheFraisType' => __DIR__ . '/../..' . '/src/Form/FicheFraisType.php',
+        'App\\Form\\RegistrationFormType' => __DIR__ . '/../..' . '/src/Form/RegistrationFormType.php',
         'App\\Kernel' => __DIR__ . '/../..' . '/src/Kernel.php',
+        'App\\Repository\\ComptableRepository' => __DIR__ . '/../..' . '/src/Repository/ComptableRepository.php',
         'App\\Repository\\EtatRepository' => __DIR__ . '/../..' . '/src/Repository/EtatRepository.php',
         'App\\Repository\\FicheFraisRepository' => __DIR__ . '/../..' . '/src/Repository/FicheFraisRepository.php',
         'App\\Repository\\FraisForfaitRepository' => __DIR__ . '/../..' . '/src/Repository/FraisForfaitRepository.php',
         'App\\Repository\\LigneFraisForfaitRepository' => __DIR__ . '/../..' . '/src/Repository/LigneFraisForfaitRepository.php',
         'App\\Repository\\LigneFraisHorsForfaitRepository' => __DIR__ . '/../..' . '/src/Repository/LigneFraisHorsForfaitRepository.php',
+        'App\\Repository\\UserRepository' => __DIR__ . '/../..' . '/src/Repository/UserRepository.php',
         'App\\Repository\\VisiteurRepository' => __DIR__ . '/../..' . '/src/Repository/VisiteurRepository.php',
+        'App\\Security\\UserAuthenticator' => __DIR__ . '/../..' . '/src/Security/UserAuthenticator.php',
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
         'Collator' => __DIR__ . '/..' . '/symfony/intl/Resources/stubs/Collator.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
@@ -692,6 +710,17 @@ class ComposerStaticInit3d44527d6d6b3a29308437fb271c19d5
         'Doctrine\\Bundle\\DoctrineBundle\\Repository\\ServiceEntityRepository' => __DIR__ . '/..' . '/doctrine/doctrine-bundle/Repository/ServiceEntityRepository.php',
         'Doctrine\\Bundle\\DoctrineBundle\\Repository\\ServiceEntityRepositoryInterface' => __DIR__ . '/..' . '/doctrine/doctrine-bundle/Repository/ServiceEntityRepositoryInterface.php',
         'Doctrine\\Bundle\\DoctrineBundle\\Twig\\DoctrineExtension' => __DIR__ . '/..' . '/doctrine/doctrine-bundle/Twig/DoctrineExtension.php',
+        'Doctrine\\Bundle\\FixturesBundle\\Command\\LoadDataFixturesDoctrineCommand' => __DIR__ . '/..' . '/doctrine/doctrine-fixtures-bundle/Command/LoadDataFixturesDoctrineCommand.php',
+        'Doctrine\\Bundle\\FixturesBundle\\DependencyInjection\\CompilerPass\\FixturesCompilerPass' => __DIR__ . '/..' . '/doctrine/doctrine-fixtures-bundle/DependencyInjection/CompilerPass/FixturesCompilerPass.php',
+        'Doctrine\\Bundle\\FixturesBundle\\DependencyInjection\\CompilerPass\\PurgerFactoryCompilerPass' => __DIR__ . '/..' . '/doctrine/doctrine-fixtures-bundle/DependencyInjection/CompilerPass/PurgerFactoryCompilerPass.php',
+        'Doctrine\\Bundle\\FixturesBundle\\DependencyInjection\\DoctrineFixturesExtension' => __DIR__ . '/..' . '/doctrine/doctrine-fixtures-bundle/DependencyInjection/DoctrineFixturesExtension.php',
+        'Doctrine\\Bundle\\FixturesBundle\\DoctrineFixturesBundle' => __DIR__ . '/..' . '/doctrine/doctrine-fixtures-bundle/DoctrineFixturesBundle.php',
+        'Doctrine\\Bundle\\FixturesBundle\\Fixture' => __DIR__ . '/..' . '/doctrine/doctrine-fixtures-bundle/Fixture.php',
+        'Doctrine\\Bundle\\FixturesBundle\\FixtureGroupInterface' => __DIR__ . '/..' . '/doctrine/doctrine-fixtures-bundle/FixtureGroupInterface.php',
+        'Doctrine\\Bundle\\FixturesBundle\\Loader\\SymfonyFixturesLoader' => __DIR__ . '/..' . '/doctrine/doctrine-fixtures-bundle/Loader/SymfonyFixturesLoader.php',
+        'Doctrine\\Bundle\\FixturesBundle\\ORMFixtureInterface' => __DIR__ . '/..' . '/doctrine/doctrine-fixtures-bundle/ORMFixtureInterface.php',
+        'Doctrine\\Bundle\\FixturesBundle\\Purger\\ORMPurgerFactory' => __DIR__ . '/..' . '/doctrine/doctrine-fixtures-bundle/Purger/ORMPurgerFactory.php',
+        'Doctrine\\Bundle\\FixturesBundle\\Purger\\PurgerFactory' => __DIR__ . '/..' . '/doctrine/doctrine-fixtures-bundle/Purger/PurgerFactory.php',
         'Doctrine\\Bundle\\MigrationsBundle\\Collector\\MigrationsCollector' => __DIR__ . '/..' . '/doctrine/doctrine-migrations-bundle/Collector/MigrationsCollector.php',
         'Doctrine\\Bundle\\MigrationsBundle\\Collector\\MigrationsFlattener' => __DIR__ . '/..' . '/doctrine/doctrine-migrations-bundle/Collector/MigrationsFlattener.php',
         'Doctrine\\Bundle\\MigrationsBundle\\DependencyInjection\\CompilerPass\\ConfigureDependencyFactoryPass' => __DIR__ . '/..' . '/doctrine/doctrine-migrations-bundle/DependencyInjection/CompilerPass/ConfigureDependencyFactoryPass.php',
@@ -750,6 +779,28 @@ class ComposerStaticInit3d44527d6d6b3a29308437fb271c19d5
         'Doctrine\\Common\\Collections\\Selectable' => __DIR__ . '/..' . '/doctrine/collections/lib/Doctrine/Common/Collections/Selectable.php',
         'Doctrine\\Common\\CommonException' => __DIR__ . '/..' . '/doctrine/common/lib/Doctrine/Common/CommonException.php',
         'Doctrine\\Common\\Comparable' => __DIR__ . '/..' . '/doctrine/common/lib/Doctrine/Common/Comparable.php',
+        'Doctrine\\Common\\DataFixtures\\AbstractFixture' => __DIR__ . '/..' . '/doctrine/data-fixtures/lib/Doctrine/Common/DataFixtures/AbstractFixture.php',
+        'Doctrine\\Common\\DataFixtures\\DependentFixtureInterface' => __DIR__ . '/..' . '/doctrine/data-fixtures/lib/Doctrine/Common/DataFixtures/DependentFixtureInterface.php',
+        'Doctrine\\Common\\DataFixtures\\Event\\Listener\\MongoDBReferenceListener' => __DIR__ . '/..' . '/doctrine/data-fixtures/lib/Doctrine/Common/DataFixtures/Event/Listener/MongoDBReferenceListener.php',
+        'Doctrine\\Common\\DataFixtures\\Event\\Listener\\ORMReferenceListener' => __DIR__ . '/..' . '/doctrine/data-fixtures/lib/Doctrine/Common/DataFixtures/Event/Listener/ORMReferenceListener.php',
+        'Doctrine\\Common\\DataFixtures\\Exception\\CircularReferenceException' => __DIR__ . '/..' . '/doctrine/data-fixtures/lib/Doctrine/Common/DataFixtures/Exception/CircularReferenceException.php',
+        'Doctrine\\Common\\DataFixtures\\Executor\\AbstractExecutor' => __DIR__ . '/..' . '/doctrine/data-fixtures/lib/Doctrine/Common/DataFixtures/Executor/AbstractExecutor.php',
+        'Doctrine\\Common\\DataFixtures\\Executor\\MongoDBExecutor' => __DIR__ . '/..' . '/doctrine/data-fixtures/lib/Doctrine/Common/DataFixtures/Executor/MongoDBExecutor.php',
+        'Doctrine\\Common\\DataFixtures\\Executor\\ORMExecutor' => __DIR__ . '/..' . '/doctrine/data-fixtures/lib/Doctrine/Common/DataFixtures/Executor/ORMExecutor.php',
+        'Doctrine\\Common\\DataFixtures\\Executor\\PHPCRExecutor' => __DIR__ . '/..' . '/doctrine/data-fixtures/lib/Doctrine/Common/DataFixtures/Executor/PHPCRExecutor.php',
+        'Doctrine\\Common\\DataFixtures\\FixtureInterface' => __DIR__ . '/..' . '/doctrine/data-fixtures/lib/Doctrine/Common/DataFixtures/FixtureInterface.php',
+        'Doctrine\\Common\\DataFixtures\\Loader' => __DIR__ . '/..' . '/doctrine/data-fixtures/lib/Doctrine/Common/DataFixtures/Loader.php',
+        'Doctrine\\Common\\DataFixtures\\OrderedFixtureInterface' => __DIR__ . '/..' . '/doctrine/data-fixtures/lib/Doctrine/Common/DataFixtures/OrderedFixtureInterface.php',
+        'Doctrine\\Common\\DataFixtures\\ProxyReferenceRepository' => __DIR__ . '/..' . '/doctrine/data-fixtures/lib/Doctrine/Common/DataFixtures/ProxyReferenceRepository.php',
+        'Doctrine\\Common\\DataFixtures\\Purger\\MongoDBPurger' => __DIR__ . '/..' . '/doctrine/data-fixtures/lib/Doctrine/Common/DataFixtures/Purger/MongoDBPurger.php',
+        'Doctrine\\Common\\DataFixtures\\Purger\\ORMPurger' => __DIR__ . '/..' . '/doctrine/data-fixtures/lib/Doctrine/Common/DataFixtures/Purger/ORMPurger.php',
+        'Doctrine\\Common\\DataFixtures\\Purger\\ORMPurgerInterface' => __DIR__ . '/..' . '/doctrine/data-fixtures/lib/Doctrine/Common/DataFixtures/Purger/ORMPurgerInterface.php',
+        'Doctrine\\Common\\DataFixtures\\Purger\\PHPCRPurger' => __DIR__ . '/..' . '/doctrine/data-fixtures/lib/Doctrine/Common/DataFixtures/Purger/PHPCRPurger.php',
+        'Doctrine\\Common\\DataFixtures\\Purger\\PurgerInterface' => __DIR__ . '/..' . '/doctrine/data-fixtures/lib/Doctrine/Common/DataFixtures/Purger/PurgerInterface.php',
+        'Doctrine\\Common\\DataFixtures\\ReferenceRepository' => __DIR__ . '/..' . '/doctrine/data-fixtures/lib/Doctrine/Common/DataFixtures/ReferenceRepository.php',
+        'Doctrine\\Common\\DataFixtures\\SharedFixtureInterface' => __DIR__ . '/..' . '/doctrine/data-fixtures/lib/Doctrine/Common/DataFixtures/SharedFixtureInterface.php',
+        'Doctrine\\Common\\DataFixtures\\Sorter\\TopologicalSorter' => __DIR__ . '/..' . '/doctrine/data-fixtures/lib/Doctrine/Common/DataFixtures/Sorter/TopologicalSorter.php',
+        'Doctrine\\Common\\DataFixtures\\Sorter\\Vertex' => __DIR__ . '/..' . '/doctrine/data-fixtures/lib/Doctrine/Common/DataFixtures/Sorter/Vertex.php',
         'Doctrine\\Common\\EventArgs' => __DIR__ . '/..' . '/doctrine/event-manager/lib/Doctrine/Common/EventArgs.php',
         'Doctrine\\Common\\EventManager' => __DIR__ . '/..' . '/doctrine/event-manager/lib/Doctrine/Common/EventManager.php',
         'Doctrine\\Common\\EventSubscriber' => __DIR__ . '/..' . '/doctrine/event-manager/lib/Doctrine/Common/EventSubscriber.php',
@@ -2054,6 +2105,8 @@ class ComposerStaticInit3d44527d6d6b3a29308437fb271c19d5
         'PHPStan\\PhpDocParser\\Ast\\Type\\ArrayTypeNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/Type/ArrayTypeNode.php',
         'PHPStan\\PhpDocParser\\Ast\\Type\\CallableTypeNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/Type/CallableTypeNode.php',
         'PHPStan\\PhpDocParser\\Ast\\Type\\CallableTypeParameterNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/Type/CallableTypeParameterNode.php',
+        'PHPStan\\PhpDocParser\\Ast\\Type\\ConditionalTypeForParameterNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/Type/ConditionalTypeForParameterNode.php',
+        'PHPStan\\PhpDocParser\\Ast\\Type\\ConditionalTypeNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/Type/ConditionalTypeNode.php',
         'PHPStan\\PhpDocParser\\Ast\\Type\\ConstTypeNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/Type/ConstTypeNode.php',
         'PHPStan\\PhpDocParser\\Ast\\Type\\GenericTypeNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/Type/GenericTypeNode.php',
         'PHPStan\\PhpDocParser\\Ast\\Type\\IdentifierTypeNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/Type/IdentifierTypeNode.php',
@@ -6402,9 +6455,9 @@ class ComposerStaticInit3d44527d6d6b3a29308437fb271c19d5
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit3d44527d6d6b3a29308437fb271c19d5::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit3d44527d6d6b3a29308437fb271c19d5::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit3d44527d6d6b3a29308437fb271c19d5::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit40078e250758264be8a246bdf73ea1c2::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit40078e250758264be8a246bdf73ea1c2::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit40078e250758264be8a246bdf73ea1c2::$classMap;
 
         }, null, ClassLoader::class);
     }

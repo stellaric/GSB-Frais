@@ -3,6 +3,44 @@
 {% block title %}FicheFrais{% endblock %}
 
 {% block body %}
+ <!-- Barre de menu  -->
+<nav class="navbar shadow-1 airforce dark-2">
+  <a href="#" class="navbar-brand">GSB</a>
+    <div class="navbar-menu ml-auto hover-bg-dark">
+ 
+  <a class="navbar-link " href="{{path('deconnexion')}}">Déconnexion</a>
+  <a data-target="slidebar" class="navbar-link" >Plus </a>
+    </div>
+</nav>
+ <!--  -->
+
+               
+           
+ <!-- Slidebar -->
+<div class="sidenav shadow-1 white" id="slidebar" data-ax="sidenav">
+  <div class="sidenav-header airforce dark-2">
+  <a class="navbar-link navbar-centered" href=""> {{app.user.nom}} {{app.user.prenom}} </a>
+
+  </div>
+    <a href="{{path('visiteur')}}" class="sidenav-link ">Accueil</a>
+    <a href="{{path('renseigner')}}" class="sidenav-link ">Renseigner</a>
+    <a href="{{path('consulter')}}" class="sidenav-link">Consulter</a>
+    
+  <div class="sidenav-footer  airforce dark-2">
+   @Copyright GSB
+  </div>
+</div>
+ <!---->
+
+<br>
+<br>
+<div class="grix xs6">
+  <div class="pos-xs3">
+<div class="card shadow-1 white" style="width: 260%;">
+  <div class="card-content">
+<!--Afficher fiche frais-->
+
+
     <h1>FicheFrais</h1>
 
     <table class="table">
@@ -13,7 +51,7 @@
             </tr>
             <tr>
                 <th>Mois</th>
-                <td>{{ fiche_frai.mois ? fiche_frai.mois|date('Y-m-d') : '' }}</td>
+                <td>{{ fiche_frai.mois ? fiche_frai.mois|join(', ') : '' }}</td>
             </tr>
             <tr>
                 <th>NbJustificatifs</th>
@@ -25,14 +63,42 @@
             </tr>
             <tr>
                 <th>DateModif</th>
-                <td>{{ fiche_frai.dateModif ? fiche_frai.dateModif|date('Y-m-d') : '' }}</td>
+                <td>{{ fiche_frai.dateModif ? fiche_frai.dateModif|date('d-m-Y') : '' }}</td>
+            </tr>
+            <tr>
+                <th>DateModif</th>
+                <td>{{ fiche_frai.dateModif ? fiche_frai.dateModif|date('d-m-Y') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Ligne Frais Forfait</th>
+                <td>{{ fiche_frai.ligneFraisForfait }}</td>
+            </tr>
+            <tr>
+                <th>Ligne Frais Hors Forfait</th>
+                <td>{{ fiche_frai.ligneFraisHorsForfait }}</td>
+            </tr>
+             <tr>
+                <th>Etat</th>
+                <td>{{ fiche_frai.etat}}</td>
             </tr>
         </tbody>
     </table>
+<br>
+ 
+ <!---->
 
-    <a href="{{ path('app_fiche_frais_index') }}">back to list</a>
+    </div>
+</div>
+</div>
+</div>
 
-    <a href="{{ path('app_fiche_frais_edit', {'id': fiche_frai.id}) }}">edit</a>
+  <!--Modifier-->
+ <center> <a href="{{ path('app_fiche_frais_edit', {'id': fiche_frai.id}) }}"class="btn rounded-1 blue btn-press meadow dark-4">Modifier</a></center>
+  <!---->
+<br>
 
-    {{ include('fiche_frais/_delete_form.html.twig') }}
+
+    <!--Retour a la liste-->
+ <center> <a href="{{ path('visiteur') }}" class="btn shadow-1 rounded-1 btn-outline btn-opening text-airforce text-light-2">Retour à la Liste</a></center>
+  <!---->
 {% endblock %}

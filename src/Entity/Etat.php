@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\EtatRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -18,9 +20,19 @@ class Etat
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=30)
+     * @ORM\Column(type="string", length=255)
      */
     private $libelle;
+
+    /**
+     * @ORM\OneToMany(targetEntity=FicheFrais::class, mappedBy="etat")
+     */
+    private $ficheFrais;
+
+    public function __construct()
+    {
+        $this->ficheFrais = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -38,5 +50,39 @@ class Etat
 
         return $this;
     }
-}
 
+    /**
+     * @return Collection<int, FicheFrais>
+     */
+    public function getFicheFrais(): Collection
+    {
+        return $this->ficheFrais;
+    }
+
+    public function addFicheFrai(FicheFrais $ficheFrai): self
+    {
+        if (!$this->ficheFrais->contains($ficheFrai)) {
+            $this->ficheFrais[] = $ficheFrai;
+            $ficheFrai->setEtat($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFicheFrai(FicheFrais $ficheFrai): self
+    {
+        if ($this->ficheFrais->removeElement($ficheFrai)) {
+            // set the owning side to null (unless already changed)
+            if ($ficheFrai->getEtat() === $this) {
+                $ficheFrai->setEtat(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return (string) $this->getLibelle();
+    }
+}

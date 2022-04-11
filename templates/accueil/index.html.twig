@@ -1,25 +1,20 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AccueilController!{% endblock %}
+{% block title %}GSB {% endblock %}
 
 {% block body %}
-<nav class="navbar shadow-1 grey dark-4">
-  <a href="#" class="navbar-brand">Axentix</a>
+<nav class="navbar shadow-1 airforce dark-2">
+  <a href="#" class="navbar-brand">GSB</a>
 
   <!-- Dark menu background hover variant -->
   <div class="navbar-menu ml-auto hover-bg-dark">
-    <a class="navbar-link active" href="#">Accueil</a>
-    <a class="navbar-link" href="#">Connexion</a>
-    <a class="navbar-link" href="#">Inscription</a>
+  <a class="navbar-link" href="{{path('accueil')}}">Accueil</a>
+    <a class="navbar-link" href="{{path('connexion')}}">Connexion</a>
+    <a class="navbar-link" href="{{path('inscription')}}">Inscription  </a>
   </div>
 </nav>
-<div class="caroulix" id="example-caroulix" data-ax="caroulix" data-ax-caroulix-autoplay-enabled="true" data-caroulix-indicators-enabled="true">
-  <div class="caroulix-arrow caroulix-prev">
-    <span class="iconify-inline font-s5" data-icon="mdi:chevron-left"></span>
-  </div>
-  <div class="caroulix-arrow caroulix-next">
-    <span class="iconify-inline font-s5" data-icon="mdi:chevron-right"></span>
-  </div>
+
+<div class="caroulix" id="second-caroulix" data-ax="caroulix" data-caroulix-indicators-enabled="true" data-caroulix-indicators-is-flat="true">
   <div class="caroulix-item">
     <img src="https://picsum.photos/800/450?random=1" alt="img1" />
   </div>

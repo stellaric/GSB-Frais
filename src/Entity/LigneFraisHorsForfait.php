@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\LigneFraisHorsForfaitRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -28,9 +30,19 @@ class LigneFraisHorsForfait
     private $montant;
 
     /**
-     * @ORM\Column(type="string", length=100)
+     * @ORM\Column(type="string", length=255)
      */
     private $libelle;
+
+    /**
+     * @ORM\OneToMany(targetEntity=FicheFrais::class, mappedBy="ligneFraisHorsForfait")
+     */
+    private $ficheFrais;
+
+    public function __construct()
+    {
+        $this->ficheFrais = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -71,5 +83,40 @@ class LigneFraisHorsForfait
         $this->libelle = $libelle;
 
         return $this;
+    }
+
+    /**
+     * @return Collection<int, FicheFrais>
+     */
+    public function getFicheFrais(): Collection
+    {
+        return $this->ficheFrais;
+    }
+
+    public function addFicheFrai(FicheFrais $ficheFrai): self
+    {
+        if (!$this->ficheFrais->contains($ficheFrai)) {
+            $this->ficheFrais[] = $ficheFrai;
+            $ficheFrai->setLigneFraisHorsForfait($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFicheFrai(FicheFrais $ficheFrai): self
+    {
+        if ($this->ficheFrais->removeElement($ficheFrai)) {
+            // set the owning side to null (unless already changed)
+            if ($ficheFrai->getLigneFraisHorsForfait() === $this) {
+                $ficheFrai->setLigneFraisHorsForfait(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return (string) $this->getLibelle();
     }
 }
